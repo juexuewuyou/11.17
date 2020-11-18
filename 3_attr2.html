@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="img/1.jpg" data-target="img/1-l.jpg" class="my-small">
+  <img src="img/2.jpg" data-target="img/2-l.jpg" class="my-small">
+  <img src="img/3.jpg" data-target="img/3-l.jpg" class="my-small">
+  <img src="img/4.jpg" data-target="img/4-l.jpg" class="my-small">
+  <hr />
+  <img src="img/1-l.jpg" class="my-big">
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+  //点击小图片，下方my-big中显示大图片
+  //DOM 4步
+  //1. 查找触发事件的元素
+  //本例中: 点四个小图片都会触发变化
+  $(".my-small")
+  //2. 绑定事件处理函数
+  //自带for遍历
+  // .click(function(){
+  .mouseover(function(){
+    //this->当前点击的小图片DOM元素
+    var $this=$(this);
+    //3. 查找要修改的元素
+    //本例中: 要修改大图片： 
+    var $big=$(".my-big");
+    //4. 修改元素
+    //4.1 先取出当前点击的img上data-target属性中保存的大图片路径
+    //因为data-target是自定义扩展属性，所以只能用attr访问
+    var src=$this.attr("data-target");
+                //prop
+    //4.2 将大图片路径设置到$big的src属性上
+    //因为src是字符串格式的HTML标准属性，所以既可以用.attr()，又可以用.prop()
+    $big.attr("src",src);
+      // prop
+  })
+
+  </script>
+</body>
+
+</html>

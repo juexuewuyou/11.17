@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+</head>
+<body>
+    <div class="container">
+        <h1>jQuery中的选择器——内容过滤选择器</h1>
+        
+          <button>提交订单</button>
+          <button>Submit注册信息</button>
+          <button>马上提交</button>
+          <button>清空重填</button>
+        
+          <hr/>
+          <div class="alert" id="alert1"></div>
+          <div class="alert" id="alert2">
+            <span class="close">×</span>
+            第一个警告框
+          </div>
+        </div>
+
+        <script src="js/jquery-1.11.3.js"></script>
+        <script>
+            $("button:contains(提交)").css("background-color","green")
+            $(".alert:has(.close)").css("background-color","pink")
+        </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>.....</title>
+  <meta charset="utf-8"/>
+  <style>
+  </style>
+ </head>
+ <body>
+	<form>
+		用户名:<input disabled></br>
+		密码:<input type="password" disabled></br>
+		<input type="checkbox">我同意本站的使用条款<br>
+		<input type="submit" value="提交注册信息" disabled/>
+	</form>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+		//DOM 4步
+		//1. 查找触发事件的元素
+		//本例中: type为checkbox的input元素触发了事件
+		$(":checkbox")
+		//2. 绑定事件处理函数
+		.click(function(){
+			//this->当前点击的原生的checkbox元素对象
+			//3. 查找要修改的元素
+			//本例中: 要修改除了type为checkbox的其它元素
+			var $others=$(":input:not(:checkbox)")
+			//4. 修改元素
+			//如果当前checkbox是选中的，说明同意
+			//复习DOM第二天的bool类型标准属性
+			if(this.checked==true){
+				//则其它元素启用，则disabled属性为false
+				$others.prop("disabled",false)
+				      //property 属性
+					//.prop是专门用来修改元素属性值的函数
+			}else{//否则如果当前checkbox是未选中的，说明不同意
+				//则其它元素禁用，则disabled属性为true
+				$others.prop("disabled",true)
+			}
+			
+		})
+	</script>
+ </body>
+</html>
